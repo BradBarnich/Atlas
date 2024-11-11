@@ -14,7 +14,7 @@ COPY ./js /code/js
 RUN npm run build:docker
 
 # Statically pre-compress all output files to be served
-COPY ./index.html /code/index.html
+COPY ./index.bundled.html /code/index.html
 RUN find . -type f "(" \
         -name "*.css" \
         -o -name "*.html" \
