@@ -6,10 +6,10 @@ define([], function () {
 	}
 
 	var webapi_url = "${WEBAPI_URL}";
-	
+
 	if ("${USE_DYNAMIC_WEBAPI_URL}" == "true") {
 		var getUrl = window.location;
-	    webapi_url = getUrl.protocol + "//" + getUrl.hostname + "${DYNAMIC_WEBAPI_SUFFIX}";
+	    webapi_url = getUrl.protocol + "//" + getUrl.hostname + ":" + getUrl.port + "${DYNAMIC_WEBAPI_SUFFIX}";
 	}
 
 	// WebAPI
