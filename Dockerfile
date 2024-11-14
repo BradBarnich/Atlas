@@ -15,6 +15,7 @@ RUN npm run build:docker
 
 # Statically pre-compress all output files to be served
 COPY ./index.bundled.html /code/index.html
+COPY ./index.html /code/index.unbundled.html
 RUN find . -type f "(" \
         -name "*.css" \
         -o -name "*.html" \
@@ -152,7 +153,7 @@ COPY --from=builder /code/30-atlas-env-subst.sh /docker-entrypoint.d/30-atlas-en
 # Load code
 COPY ./images /usr/share/nginx/html/images
 COPY ./README.md ./LICENSE /usr/share/nginx/html/
-COPY --from=builder /code/index.html* /usr/share/nginx/html/
+COPY --from=builder /code/index.* /usr/share/nginx/html/
 COPY --from=builder /code/node_modules /usr/share/nginx/html/node_modules
 COPY --from=builder /code/js /usr/share/nginx/html/js
 
