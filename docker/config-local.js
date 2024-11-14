@@ -9,7 +9,11 @@ define([], function () {
 
 	if ("${USE_DYNAMIC_WEBAPI_URL}" == "true") {
 		var getUrl = window.location;
-	    webapi_url = getUrl.protocol + "//" + getUrl.hostname + ":" + getUrl.port + "${DYNAMIC_WEBAPI_SUFFIX}";
+		if (getUrl.port != "") {
+			webapi_url = getUrl.protocol + "//" + getUrl.hostname + ":" + getUrl.port + "${DYNAMIC_WEBAPI_SUFFIX}";
+		} else {
+			webapi_url = getUrl.protocol + "//" + getUrl.hostname + "${DYNAMIC_WEBAPI_SUFFIX}";
+		}
 	}
 
 	// WebAPI
